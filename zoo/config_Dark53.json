@@ -1,0 +1,42 @@
+{
+    "model" : {
+        "min_input_size":       320,
+        "max_input_size":       640,
+        "anchors":              [18,20, 30,35, 48,54, 60,64, 78,84, 86,89, 96,100, 118,113, 134,141],
+        "labels":               ["prohibit"],
+        "data_load_method":     "origin"
+    },
+
+    "train": {
+        "train_image_folder":   "/data/traffic_cognition/Dataset_TC-version1.x/ZOOO/TT100k/JPEGImages/train",
+        "train_annot_folder":   "/data/traffic_cognition/Dataset_TC-version1.x/ZOOO/TT100k/Annotations/train",   
+        "cache_name":           "TT100k-prohibit.pkl",  
+          
+        "train_times":          1,
+        "batch_size":           4,
+        "learning_rate":        1e-3,
+        "nb_epochs":            1000,
+        "warmup_epochs":        2,
+        "ignore_thresh":        0.5,
+        "gpus":                 "0",
+
+        "grid_scales":          [1,1,1],
+        "obj_scale":            5,
+        "noobj_scale":          1,
+        "xywh_scale":           1,
+        "class_scale":          1,
+
+        "tensorboard_dir":      "log_sign",
+        "pretrain_weights":     "/code/log_sign/Dark53-backup.h5",
+        "saved_weights_name":   "Dark53.h5",
+        "debug":                true
+    },
+
+    "valid": {
+        "valid_image_folder":   "/data/traffic_cognition/Dataset_TC-version1.x/DATA/TT100k/JPEGImages/test-512",
+        "valid_annot_folder":   "/data/traffic_cognition/Dataset_TC-version1.x/DATA/TT100k/Annotations/test-512/test",
+        "cache_name":           "TT100k-test-512.pkl",
+        "valid_times":          1,
+        "gpus":                 "3"
+    }
+}

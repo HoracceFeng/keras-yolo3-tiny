@@ -1,0 +1,40 @@
+{
+    "model" : {
+        "min_input_size":       320,
+        "max_input_size":       608,
+        "anchors":              [16,18, 22,25, 30,36, 41,47, 55,58, 68,79, 92,95, 117,132, 183,178],
+        "labels":               ["prohibit"]
+    },
+
+    "train": {
+        "train_image_folder":   "/home/andy/Desktop/github/kangaroo/images/",
+        "train_annot_folder":   "/home/andy/Desktop/github/kangaroo/annots/",
+        "cache_name":           "kangaroo_train.pkl",
+
+        "train_times":          8,
+        "batch_size":           16,
+        "learning_rate":        1e-4,
+        "nb_epochs":            100,
+        "warmup_epochs":        1,
+        "ignore_thresh":        0.5,
+        "gpus":                 "0,1",
+
+        "grid_scales":          [1,1,1],
+        "obj_scale":            5,
+        "noobj_scale":          1,
+        "xywh_scale":           1,
+        "class_scale":          1,
+
+        "tensorboard_dir":      "logs",
+        "saved_weights_name":   "kangaroo.h5",
+        "debug":                true
+    },
+
+    "valid": {
+        "valid_image_folder":   "",
+        "valid_annot_folder":   "",
+        "cache_name":           "",
+
+        "valid_times":          1
+    }
+}

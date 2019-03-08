@@ -1,0 +1,42 @@
+{
+    "model" : {
+        "min_input_size":       320,
+        "max_input_size":       704,
+        "anchors":              [18,20, 30,35, 48,54, 48,54, 78,84, 134,141],
+        "labels":               ["prohibit"],
+        "data_load_method":     "txt"
+    },
+
+    "train": {
+        "rootdir":              "/data/ZOOO/ImageSets/trainer/darknet",
+        "dataset_txt":          "88G-gis2-AllPosi-nonega-nodifc_tt100k-shufAug.txt",
+        "cache_name":           "./cache/88G-gis2-AllPosi-nonega-nodifc_tt100k-shufAug-prohibit.pkl",  
+          
+        "train_times":          1,
+        "batch_size":           40,
+        "learning_rate":        1e-4,
+        "nb_epochs":            100,
+        "warmup_epochs":        0,
+        "ignore_thresh":        0.5,
+        "gpus":                 "0,1",
+
+        "grid_scales":          [1,1],
+        "obj_scale":            1,
+        "noobj_scale":          1,
+        "xywh_scale":           1,
+        "class_scale":          1,
+
+        "tensorboard_dir":      "log_sign2",
+        "pretrain_weights":     "/code/log_sign2/TinyX5-tt100k-backup.h5",
+        "saved_weights_name":   "TinyX5-SimpleFT",
+        "debug":                true
+    },
+
+    "valid": {
+        "rootdir":              "",
+        "dataset_txt":          "",
+        "cache_name":           "./cache/88G-gis2-AllPosi-nonega-nodifc_tt100k-shufAug-prohibit-eval.pkl",
+        "valid_times":          1,
+        "gpus":                 "3"
+    }
+}
