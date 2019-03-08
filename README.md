@@ -1,3 +1,48 @@
+	@@   Editor:   Horacce
+	@@   Date  :   2019.03.08
+
+
+This project is modified from experiencor/keras-yolo3 [origin README.md also provided below], the code is still under polising.
+
+To use this code:
+1. modify the config:
+   - data load in method:
+     For ['data']['data_load_method']: "origin":    origin data read in method, example config: zoo/config_voc.json                  [voc.py]
+     For ['data']['data_load_method']: "txt":       control data load in by a txt file, example config: zoo/config_yolov3-tiny.json  [VocFromTxt.py]
+   - pretrain model:
+     now cannot support pretrained model, the model will initialize automatically, if anyone can provide, please contact me, thank you. 
+2. For training: python train.py -c zoo/config_yolov3-tiny.cfg
+3. For testing:  python predict.py -c zoo/config_yolov3-tiny.cfg -i [image_path] -o [result_dir]
+
+
+Why use this code:
+1. support multi-gpu training [thanks again for experiencor's work]
+2. support yolov3-tiny
+3. a little bit more stable loss and more convinence than the origin one [maybe = =] 
+
+
+
+Something updates:
+- Type Error Fix in tensor shape setting: now support retangle image train/test
+- Yolov3-Tiny support now [For Yolov3, please use the original version]
+- allow train without pretrain model
+- config modification for convenient usage 
+- Loss function update [the original version is difficult to converge, new version is better]
+
+ToDo:
+- [ ] support yolov3
+- [ ] pretrained model for yolov3-tiny
+- [ ] different backbones
+- [ ] easily debug structure for different models in one config 
+
+
+
+========================================================================================================================================================================
+========================================================================================================================================================================
+========================================================================================================================================================================
+
+
+
 # YOLO3 (Detection, Training, and Evaluation)
 
 ## Dataset and Model
@@ -8,15 +53,6 @@ Kangaroo Detection (1 class) (https://github.com/experiencor/kangaroo) | 95% | h
 Raccoon Detection (1 class) (https://github.com/experiencor/raccoon_dataset) | 98% | https://youtu.be/lxLyLIL7OsU | check zoo | http://bit.do/ekQFf
 Red Blood Cell Detection (3 classes) (https://github.com/experiencor/BCCD_Dataset) | 84% | https://imgur.com/a/uJl2lRI | check zoo | http://bit.do/ekQFc
 VOC (20 classes) (http://host.robots.ox.ac.uk/pascal/VOC/voc2012/) | 72% | https://youtu.be/0RmOI6hcfBI | check zoo | http://bit.do/ekQE5
-
-## Todo list:
-- [x] Yolo3 detection
-- [x] Yolo3 training (warmup and multi-scale)
-- [x] mAP Evaluation
-- [x] Multi-GPU training
-- [x] Evaluation on VOC
-- [ ] Evaluation on COCO
-- [ ] MobileNet, DenseNet, ResNet, and VGG backends
 
 ## Detection
 
